@@ -77,27 +77,36 @@ var Database = function(url) {
   this.findById = function(collName, id) {
     var d = Q.defer();
 
-    self.find(collName, {
-      _id: new ObjectID(id)
-    }, {
-      limit: 1
-    })
-      .then(function(doc) {
-        if (doc.length === 1) {
-          d.resolve(doc[0]);
-        } else {
-          d.resolve({});
-        }
+    try {
+      self.find(collName, {
+        _id: new ObjectID(id)
+      }, {
+        limit: 1
+      })
+        .then(function(doc) {
+          if (doc.length === 1) {
+            d.resolve(doc[0]);
+          } else {
+            d.resolve({});
+          }
 
-      }, d.reject);
+        }, d.reject);
+    } catch (err) {
+      d.reject(err);
+    }
 
     return d.promise;
   };
 
   this.deleteById = function(collName, id) {
-    return self.delete(collName, {
-      _id: new ObjectID(id)
-    });
+    try {
+      return self.delete(collName, {
+        _id: new ObjectID(id)
+      });
+    }
+    catch(err) {
+      return Q.reject(err);
+    }
   };
 
   this.delete = function(collName, criteria) {
@@ -131,8 +140,7 @@ var Database = function(url) {
         coll.update(criteria, updated, options, function(err, result) {
           if (err) {
             d.reject(err);
-          }
-          else {
+          } else {
             d.resolve(result);
           }
         });
