@@ -1,0 +1,40 @@
+{
+  "name": "aec-mongo",
+  "version": "0.0.1",
+  "description": "aec-mongo",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sahina/aec-mongo.git"
+  },
+  "scripts": {
+    "test": "mocha watch -R spec specs"
+  },
+  "author": "Altug Sahin",
+  "license": "ISC",
+  "dependencies": {
+    "lodash": "^2.4.1",
+    "mongodb": "^1.4.5",
+    "q": "^1.0.1"
+  },
+  "devDependencies": {
+    "connect-livereload": "^0.4.0",
+    "gulp": "^3.6.2",
+    "gulp-browserify": "^0.5.0",
+    "gulp-clean": "^0.2.4",
+    "gulp-concat": "^2.2.0",
+    "gulp-jshint": "^1.5.5",
+    "gulp-less": "^1.2.3",
+    "gulp-livereload": "^1.5.0",
+    "gulp-mocha": "^0.4.1",
+    "gulp-ngmin": "^0.3.0",
+    "gulp-uglify": "^0.3.0",
+    "gulp-rename": "^1.2.0",
+    "gulp-util": "^2.2.14",
+    "gulp-zip": "^0.3.4",
+    "jshint-stylish": "^0.2.0",
+    "napa": "^0.4.1",
+    "should": "^3.3.1",
+    "tiny-lr": "0.0.7"
+  }
+}
