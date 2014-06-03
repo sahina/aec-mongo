@@ -1,10 +1,10 @@
-var Database = require('../api/models/db');
+var Database = require('../models/db');
 var ObjectID = require('mongodb').ObjectID;
 var Q = require('q');
 var should = require('should');
 var _ = require('lodash');
-var MONGO_URL = 'mongodb://localhost:27017/selfbin';
-var COLL_NAME = 'users_test';
+var MONGO_URL = 'mongodb://localhost:27017/test';
+var COLL_NAME = 'aec-mongo_test';
 
 
 describe('db', function() {
