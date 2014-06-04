@@ -1,7 +1,7 @@
+require('should');
 var Database = require('../models/db');
 var ObjectID = require('mongodb').ObjectID;
 var Q = require('q');
-var should = require('should');
 var _ = require('lodash');
 var MONGO_URL = 'mongodb://localhost:27017/test';
 var COLL_NAME = 'aec-mongo_test';
@@ -27,14 +27,14 @@ describe('db', function() {
     });
 
     db.insert(COLL_NAME, fakeUsers)
-      .then(function(inserted) {
+      .then(function() {
         done();
       }).done(null, done);
 
   });
 
   after(function(done) {
-    db.deleteAll(COLL_NAME).then(function(count) {
+    db.deleteAll(COLL_NAME).then(function() {
       done();
     }).done(null, done);
   });

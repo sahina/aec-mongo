@@ -3,14 +3,14 @@
 var Q = require('q');
 var MongoClient = require('mongodb').MongoClient;
 var ObjectID = require('mongodb').ObjectID;
-var conectionPromise = null;
+var connectionPromise = null;
 
 var Database = function(url) {
   this.url = url;
   var self = this;
 
   this.getDb = function() {
-    if (conectionPromise === null) {
+    if (connectionPromise === null) {
       var d = Q.defer();
 
       Q.nfcall(MongoClient.connect, this.url)
@@ -18,10 +18,10 @@ var Database = function(url) {
           d.resolve(db);
         }, d.reject);
 
-      conectionPromise = d.promise;
-      return conectionPromise;
+      connectionPromise = d.promise;
+      return connectionPromise;
     } else {
-      return conectionPromise;
+      return connectionPromise;
     }
   };
 
